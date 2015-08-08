@@ -50,6 +50,7 @@ macro(fetch_vtk)
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
+    UPDATE_COMMAND ""
   )
 endmacro()
 
@@ -109,6 +110,7 @@ macro(fetch_flann)
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
+    UPDATE_COMMAND ""
   )
 endmacro()
 
@@ -136,7 +138,6 @@ macro(crosscompile_flann tag)
   force_build(${proj})
 endmacro()
 
-
 #
 # Boost fetch
 #
@@ -144,11 +145,12 @@ macro(fetch_boost)
   ExternalProject_Add(
     boost-fetch
     SOURCE_DIR ${source_prefix}/boost
-    GIT_REPOSITORY git://github.com/patmarion/boost-build
+    GIT_REPOSITORY git://github.com/indianajohn-aemass/boost-build
     GIT_TAG origin/master
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
+    UPDATE_COMMAND ""
   )
 endmacro()
 
@@ -175,7 +177,6 @@ macro(crosscompile_boost tag)
   force_build(${proj})
 endmacro()
 
-
 #
 # PCL fetch
 #
@@ -183,11 +184,12 @@ macro(fetch_pcl)
   ExternalProject_Add(
     pcl-fetch
     SOURCE_DIR ${source_prefix}/pcl
-    GIT_REPOSITORY git://github.com/patmarion/PCL.git
-    GIT_TAG origin/android-tag
+    GIT_REPOSITORY git://github.com/PointCloudLibrary/pcl.git
+    GIT_TAG da5a6ba4fc8861346a39ea2c6def45193de11f2e
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
+    UPDATE_COMMAND ""
   )
 endmacro()
 
@@ -223,8 +225,8 @@ macro(crosscompile_pcl tag)
       -DEIGEN_INCLUDE_DIR=${install_prefix}/eigen
       -DFLANN_INCLUDE_DIR=${install_prefix}/flann-${tag}/include
       -DFLANN_LIBRARY=${install_prefix}/flann-${tag}/lib/libflann_cpp_s.a
-      -DBOOST_ROOT=${install_prefix}/boost-${tag}
       -C ${try_run_results_file}
+      -DWITH_OPENGL:BOOL=OFF
   )
 
   force_build(${proj})
