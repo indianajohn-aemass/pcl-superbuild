@@ -17,11 +17,18 @@
 unset ANDROID_NDK
 
 # Make a standalone toolchain
-if [-z "$ANDROID_NDK_TOOLCHAIN_ROOT" ]; then
-    export ANDROID_NDK_TOOLCHAIN_ROOT=${PWD##*/}/android_toolchain/
-    mkdir $ANDROID_NDK_TOOLCHAIN_ROOT;
+if [ -z $ANDROID_NDK_TOOLCHAIN_ROOT && -d $ANDROID_NDK_TOOLCHAIN_ROOT ]; then
+    echo "Using user-specified Android NDK toolchain at $ANDROID_NDK_TOOLCHAIN_ROOT for build."
+else
+    export ANDROID_NDK_TOOLCHAIN_ROOT=$(pwd)/android_toolchain/
+    if [ -d $ANDROID_NDK_TOOLCHAIN_ROOT ]; then
+        echo "Using Android NDK toolchain found at $ANDROID_NDK_TOOLCHAIN_ROOT for build."
+    else
+        mkdir $ANDROID_NDK_TOOLCHAIN_ROOT;
+        echo "Using new directory $ANDROID_NDK_TOOLCHAIN_ROOT for new Android NDK toolchain.";
+        $ANDROID_NDK_NODETECT/build/tools/make-standalone-toolchain.sh --ndk-dir=$ANDROID_NDK_NODETECT --install_dir=$ANDROID_NDK_TOOLCHAIN_ROOT --platform="android-19" --toolchain=arm-linux-androideabi-4.9
+    fi
 fi
-$ANDROID_NDK_NODETECT/build/tools/make-standalone-toolchain.sh --ndk-dir=$ANDROID_NDK_NODETECT --install_dir=$ANDROID_NDK_TOOLCHAIN_ROOT --platform="android-19" --toolchain=arm-linux-androideabi-4.9
 
 # Make PCL Superbuild
 mkdir build
