@@ -66,5 +66,5 @@ References
 2. Choose a toolchain.  http://stackoverflow.com/questions/29444079/unable-to-auto-config-arch-from-toolchain
 3. https://github.com/patmarion/pcl-superbuild
 4. https://github.com/Itseez/opencv/blob/master/platforms/android/android.toolchain.cmake
-5.https://github.com/patmarion/boost-build
+5. https://github.com/patmarion/boost-build
 6. https://github.com/emileb/Boost-for-Android-Prebuilt
