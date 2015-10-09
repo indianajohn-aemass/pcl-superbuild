@@ -17,7 +17,7 @@
 unset ANDROID_NDK
 
 # Make a standalone toolchain
-if [ -z $ANDROID_NDK_TOOLCHAIN_ROOT && -d $ANDROID_NDK_TOOLCHAIN_ROOT ]; then
+if [ -z $ANDROID_NDK_TOOLCHAIN_ROOT ] && [ -d $ANDROID_NDK_TOOLCHAIN_ROOT ]; then
     echo "Using user-specified Android NDK toolchain at $ANDROID_NDK_TOOLCHAIN_ROOT for build."
 else
     export ANDROID_NDK_TOOLCHAIN_ROOT=$(pwd)/android_toolchain/
