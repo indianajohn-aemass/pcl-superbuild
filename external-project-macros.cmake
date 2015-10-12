@@ -182,8 +182,8 @@ macro(fetch_pcl)
   ExternalProject_Add(
     pcl-fetch
     SOURCE_DIR ${source_prefix}/pcl
-    GIT_REPOSITORY git://github.com/PointCloudLibrary/pcl.git
-    GIT_TAG d46cf48f98c4c11f64a16c289237ad3229fe45e9
+    GIT_REPOSITORY git://github.com/indianajohn-aemass/pcl.git
+    GIT_TAG 57306e6a2d64bcf602645162e0104ba64f7ce903
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
