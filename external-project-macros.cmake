@@ -183,7 +183,7 @@ macro(fetch_pcl)
     pcl-fetch
     SOURCE_DIR ${source_prefix}/pcl
     GIT_REPOSITORY git://github.com/PointCloudLibrary/pcl.git
-    GIT_TAG da5a6ba4fc8861346a39ea2c6def45193de11f2e
+    GIT_TAG d46cf48f98c4c11f64a16c289237ad3229fe45e9
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
