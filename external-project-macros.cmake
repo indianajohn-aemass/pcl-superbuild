@@ -25,13 +25,11 @@ endmacro()
 # Eigen fetch and install
 #
 macro(install_eigen)
-  set(eigen_url http://www.vtk.org/files/support/eigen-3.1.0-alpha1.tar.gz)
-  set(eigen_md5 c04dedf4ae97b055b6dd2aaa01daf5e9)
+  set(eigen_url http://bitbucket.org/eigen/eigen/get/3.2.5.tar.bz2)
   ExternalProject_Add(
     eigen
     SOURCE_DIR ${source_prefix}/eigen
     URL ${eigen_url}
-    URL_MD5 ${eigen_md5}
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_directory "${source_prefix}/eigen/Eigen" "${install_prefix}/eigen/Eigen" && ${CMAKE_COMMAND} -E copy_directory "${source_prefix}/eigen/unsupported" "${install_prefix}/eigen/unsupported"
